@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PLAYON</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #343a40;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        .add-button {
+            display: block;
+            width: 200px;
+            margin: 20px auto;
+            padding: 10px 15px;
+            background-color: #28a745;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        .add-button:hover {
+            background-color: #218838;
+        }
+        table {
+            width: 90%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        table th, table td {
+            padding: 12px 15px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        table th {
+            background-color: #2f67a3;
+            color: white;
+            font-size: 1.2rem;
+        }
+        table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        table tr:hover {
+            background-color: #f1f1f1;
+        }
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        .action-buttons a, .action-buttons form button {
+            background-color: #28a745;
+            color: white;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .action-buttons form button {
+            background-color: #dc3545;
+        }
+        .action-buttons a:hover {
+            background-color: #218838;
+        }
+        .action-buttons form button:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>PLAYON</h1>
+    </header>
+    <a class="add-button" href="/add">Oyun Ekle</a>
+    <table>
+        <thead>
+            <tr>
+                <th>Oyun Adı</th>
+                <th>Tür</th>
+                <th>Açıklama</th>
+                <th>Yayıncı</th>
+                <th>Çıkış Yılı</th>
+                <th>Metacritic Puanı</th>
+                <th>Fiyat (TL)</th>
+                <th>Son Güncelleme</th>
+                <th>İşlemler</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for oyun in oyunlar %}
+            <tr>
+                <td>{{ oyun[1] }}</td>
+                <td>{{ oyun[2] }}</td>
+                <td>{{ oyun[3] }}</td>
+                <td>{{ oyun[4] }}</td>
+                <td>{{ oyun[5] }}</td>
+                <td>{{ oyun[6] }}</td>
+                <td>{{ oyun[7] }}</td>
+                <td>{{ oyun[8] }}</td>
+                <td>
+                    <div class="action-buttons">
+                        <a href="/update/{{ oyun[0] }}">Güncelle</a>
+                        <form action="/delete/{{ oyun[1] }}" method="POST" style="display:inline;">
+                            <button type="submit" onclick="return confirm('Silmek istediğinize emin misiniz?')">Sil</button>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oyun Güncelle</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+        }
+        
+        form {
+            max-width: 1500px;
+            width: 100%;
+            padding: 20px;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        form h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            color: #333;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #555;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        textarea {
+            resize: vertical;
+        }
+        button {
+            width: 100%;
+            background-color: #28a745;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 10px;
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        a:hover {
+            color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <form method="POST">
+        <h1>Oyun Güncelle</h1>
+        <label for="oyun_ad">Oyun Adı:</label>
+        <input type="text" id="oyun_ad" name="oyun_ad" value="{{ oyun[1] }}" readonly><br> <!--oyun adı UNIQUE bir değer olduğundan "readonly ile"
+                                                                                kullanıcının değiştirmesini engelldik bu sayede hata almıyoruz-->   
+        <label for="oyun_tur">Oyun Türü:</label>
+        <input type="text" id="oyun_tur" name="oyun_tur" value="{{ oyun[2] }}"><br>
+
+        <label for="oyun_aciklamasi">Oyun Açıklaması:</label>
+        <textarea id="oyun_aciklamasi" name="oyun_aciklamasi">{{ oyun[3] }}</textarea><br>
+
+        <label for="yayinci_ad">Yayıncı Adı:</label>
+        <input type="text" id="yayinci_ad" name="yayinci_ad" value="{{ oyun[4] }}"><br>
+
+        <label for="cikis_yili">Çıkış Yılı:</label>
+        <input type="number" id="cikis_yili" name="cikis_yili" value="{{ oyun[5] }}"><br>
+
+        <label for="metacritic_puan">Metacritic Puanı:</label>
+        <input type="number" id="metacritic_puan" name="metacritic_puan" value="{{ oyun[6] }}" min="0" max="100"><br>
+
+        <label for="fiyat">Fiyat:</label>
+        <input type="number" id="fiyat" name="fiyat" value="{{ oyun[7] }}" step="0.01"><br>
+
+        <button type="submit">Güncelle</button>
+        <a href="/">Ana Sayfa</a>
+    </form>
+</body>
+</html>
