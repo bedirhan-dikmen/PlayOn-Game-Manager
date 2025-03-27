@@ -1,6 +1,6 @@
 # Game Library Manager
 
-A fundamental Flask and MySQL based game collection management application.
+A simple Flask and MySQL based game collection management application.
 
 ## Features
 - Add/edit/delete games
